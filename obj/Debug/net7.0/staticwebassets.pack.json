@@ -17,6 +17,10 @@
       "PackagePath": "staticwebassets\\img\\1-no-bg.png"
     },
     {
+      "Id": "C:\\Users\\MorneC\\dev\\Weatherly\\wwwroot\\img\\2-no-bg.png",
+      "PackagePath": "staticwebassets\\img\\2-no-bg.png"
+    },
+    {
       "Id": "C:\\Users\\MorneC\\dev\\Weatherly\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

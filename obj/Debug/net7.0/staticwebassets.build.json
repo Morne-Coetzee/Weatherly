@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "PI5f8TKesyjTOLoomloF4/A/SzTzTZ5b01QED8/I9OI=",
+  "Hash": "sjljS4tw+C5ERi+QhDhKR9/i8XfkqX6lPokBFREylaM=",
   "Source": "Weatherly",
   "BasePath": "_content/Weatherly",
   "Mode": "Default",
@@ -100,6 +100,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\1-no-bg.png"
+    },
+    {
+      "Identity": "C:\\Users\\MorneC\\dev\\Weatherly\\wwwroot\\img\\2-no-bg.png",
+      "SourceId": "Weatherly",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MorneC\\dev\\Weatherly\\wwwroot\\",
+      "BasePath": "_content/Weatherly",
+      "RelativePath": "img/2-no-bg.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\2-no-bg.png"
     },
     {
       "Identity": "C:\\Users\\MorneC\\dev\\Weatherly\\wwwroot\\js\\site.js",

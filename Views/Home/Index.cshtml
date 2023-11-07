@@ -1,0 +1,223 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="dark-mode">
+    <button id="dark-mode-toggle" class="btn btn-dark">
+        <i id="sun-icon" class="fa-solid fa-sun"></i>
+        <i id="cloud-icon" class="fa-solid fa-cloud"></i>
+    </button>
+</div>
+<div class="container-form mt-4">
+    <form id="weather-form" class="text-center">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="location">Location:</label>
+                    <input type="text" id="location" class="form-control" placeholder="Enter location">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="unit">Unit:</label>
+                    <select id="unit" class="form-control">
+                        <option value="C">Celsius</option>
+                        <option value="F">Fahrenheit</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div id="overlay" class="overlay" style="display:none;">
+            <div class="loader" id="loader"></div>
+        </div>
+        <div class="row text-center">
+            <center>
+                <div class="col-md-4">
+                    <button id="fetch-weather" class="btn btn-primary text-center">Fetch Weather</button>
+                </div>
+            </center>
+        </div>
+    </form>
+</div>
+<div class="container-wheather mt-4">
+    <div id="weather-info container" class="text-center">
+        <div class="row">
+            <div class="col-md-5">
+                <div id="location-value" class="mb-3"></div>
+                <div id="region-value" class="mb-3"></div>
+                <div id="country-value" class="mb-3"></div>
+            </div>
+            <div class="col-md-5">
+                <div id="temperature-c-value" class="mb-3"></div>
+                <div id="temperature-f-value" class="mb-3"></div>
+                <div id="feelslike-c-value" class="mb-3"></div>
+                <div id="feelslike-f-value" class="mb-3"></div>
+                <div id="condition-text-value" class="mb-3"></div>
+            </div>
+            <div class="col-md-2">
+                <div id="temperature-icon" class="mb-3"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <h3 id="wind-h3">Wind</h3>
+                <div id="wind-mph-value" class="mb-3"></div>
+                <div id="wind-kph-value" class="mb-3"></div>
+                <div id="wind-degree-value" class="mb-3"></div>
+                <div id="wind-dir-value" class="mb-3"></div>
+            </div>
+            <div class="col-md-5">
+                <h3 id="pressure-h3">Pressure</h3>
+                <div id="pressure-mb-value" class="mb-3"></div>
+                <div id="pressure-in-value" class="mb-3"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <h3 id="general-h3">General</h3>
+                <div id="precip-mm-value" class="mb-3"></div>
+                <div id="precip-in-value" class="mb-3"></div>
+                <div id="humidity-value" class="mb-3"></div>
+                <div id="visibility-km-value" class="mb-3"></div>
+                <div id="visibility-miles-value" class="mb-3"></div>
+            </div>
+            <div class="col-md-5">
+                <div id="cloud-value" class="mb-3"></div>
+                <div id="uv-value" class="mb-3"></div>
+                <div id="gust-mph-value" class="mb-3"></div>
+                <div id="gust-kph-value" class="mb-3"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://kit.fontawesome.com/810f2f3428.js" crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#fetch-weather").on("click", function (e) {
+            e.preventDefault();
+            $("#overlay").show();
+            var location = $("#location").val();
+            var unit = $("#unit").val();
+            $.ajax({
+                type: "GET",
+                url: "/Home/GetWeather",
+                data: { location: location, unit: unit },
+                success: function (data) {
+                    $("#overlay").hide();
+                    $("#general-h3").show();
+                    $("#pressure-h3").show();
+                    $("#wind-h3").show();
+                    if (data && data.location && data.location.name) {
+                        $("#location-value").text("Location: " + data.location.name);
+                        $("#region-value").text("Region: " + data.location.region);
+                        $("#country-value").text("Country: " + data.location.country);
+                        $("#condition-text-value").text("Condition: " + data.current.condition.text);
+                        $("#wind-degree-value").text("Wind Degree: " + data.current.wind_degree);
+                        $("#wind-dir-value").text("Wind Direction: " + data.current.wind_dir);
+                        $("#precip-in-value").text("Precipitation (in): " + data.current.precip_in);
+                        $("#humidity-value").text("Humidity: " + data.current.humidity);
+                        $("#cloud-value").text("Cloud: " + data.current.cloud);
+                        $("#uv-value").text("UV Index: " + data.current.uv);
+                        if (unit === "C") {
+                            $("#temperature-c-value").text("Temperature: " + data.current.temp_c + "°C");
+                            $("#temperature-c-value").show();
+                            $("#temperature-f-value").hide();
+                            $("#wind-kph-value").text("Wind (kph): " + data.current.wind_kph + "km/h");
+                            $("#wind-kph-value").show();
+                            $("#wind-mph-value").hide();
+                            $("#feelslike-c-value").text("Feels Like: " + data.current.feelslike_c + "°C");
+                            $("#feelslike-c-value").show();
+                            $("#feelslike-f-value").hide();
+                            $("#visibility-km-value").text("Visibility: " + data.current.vis_km) + "km";
+                            $("#visibility-km-value").show();
+                            $("#visibility-miles-value").hide();
+                            $("#gust-kph-value").text("Gust (kph): " + data.current.gust_kph + "km/h");
+                            $("#gust-kph-value").show();
+                            $("#gust-mph-value").hide();
+                            $("#pressure-mb-value").text("Pressure (mb): " + data.current.pressure_mb);
+                            $("#pressure-mb-value").show();
+                            $("#pressure-in-value").hide();
+                            $("#precip-mm-value").text("Precipitation: " + data.current.precip_mm + "mm");
+                            $("#precip-mm-value").show();
+                            $("#precip-in-value").hide();
+                        } else if (unit === "F") {
+                            $("#temperature-f-value").text("Temperature: " + data.current.temp_f + "°F");
+                            $("#temperature-f-value").show();
+                            $("#temperature-c-value").hide();
+                            $("#wind-mph-value").text("Wind: " + data.current.wind_mph + "mph");
+                            $("#wind-mph-value").show();
+                            $("#wind-kph-value").hide();
+                            $("#feelslike-f-value").text("Feels Like (Fahrenheit): " + data.current.feelslike_f + "°F");
+                            $("#feelslike-f-value").show();
+                            $("#feelslike-c-value").hide();
+                            $("#visibility-miles-value").text("Visibility: " + data.current.vis_miles + "miles");
+                            $("#visibility-miles-value").show();
+                            $("#visibility-km-value").hide();
+                            $("#gust-mph-value").text("Gust (mph): " + data.current.gust_mph + "mph");
+                            $("#gust-mph-value").show();
+                            $("#gust-kph-value").hide();
+                            $("#pressure-in-value").text("Pressure (in): " + data.current.pressure_in + "in");
+                            $("#pressure-in-value").show();
+                            $("#pressure-mb-value").hide();
+                            $("#precip-in-value").text("Precipitation (in): " + data.current.precip_in + "in");
+                            $("#precip-in-value").show();
+                            $("#precip-mm-value").hide();
+                        }
+                        var temperatureC = data.current.temp_c;
+                        displayTemperatureIcon("#temperature-icon", temperatureC);
+                    } else {
+                        $("#overlay").hide();
+                        $("#location-value").text("Location not available.");
+                    }
+                },
+                error: function (error) {
+                    $("#overlay").hide();
+                    $("#location-value").text("Failed to retrieve weather data.");
+                    console.log("Error:", error);
+                }
+            });
+        });
+    });
+
+    function displayTemperatureIcon(elementId, temperature) {
+        var iconClass = "";
+        if (temperature <= 0) {
+            iconClass = "fas fa-snowflake";
+        } else if (temperature < 20) {
+            iconClass = "fas fa-cloud-sun";
+        } else if (temperature < 30) {
+            iconClass = "fas fa-sun";
+        } else {
+            iconClass = "fas fa-fire";
+        }
+        $(elementId).html('<i class="' + iconClass + '" fa-lg></i');
+    }
+
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        document.body.classList.add('dark-mode');
+    } else {
+        document.body.classList.remove('dark-mode');
+    }
+
+    function toggleDarkMode() {
+        const body = document.body;
+        body.classList.toggle('dark-mode');
+
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('darkMode', 'enabled');
+            document.getElementById('sun-icon').style.display = 'none';
+            document.getElementById('cloud-icon').style.display = 'block';
+        } else {
+            localStorage.setItem('darkMode', 'disabled');
+            document.getElementById('sun-icon').style.display = 'block';
+            document.getElementById('cloud-icon').style.display = 'none';
+        }
+    }
+
+    document.getElementById('dark-mode-toggle').addEventListener('click', function () {
+        toggleDarkMode();
+    });
+</script>

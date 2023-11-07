@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using Wheatherly.Models;  // Replace with your actual model classes.
+using Weatherly.Models;  // Replace with your actual model classes.
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace Wheatherly.Controllers
+namespace Weatherly.Controllers
 {
     public class HomeController : Controller
     {

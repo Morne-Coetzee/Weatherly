@@ -57,11 +57,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\MorneC\\dev\\Wheatherly\\Git\\Wheatherly\\Wheatherly.csproj",
-      "projectName": "Wheatherly",
-      "projectPath": "C:\\Users\\MorneC\\dev\\Wheatherly\\Git\\Wheatherly\\Wheatherly.csproj",
+      "projectUniqueName": "C:\\Users\\MorneC\\dev\\Weatherly\\Weatherly.csproj",
+      "projectName": "Weatherly",
+      "projectPath": "C:\\Users\\MorneC\\dev\\Weatherly\\Weatherly.csproj",
       "packagesPath": "C:\\Users\\MorneC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\MorneC\\dev\\Wheatherly\\Git\\Wheatherly\\obj\\",
+      "outputPath": "C:\\Users\\MorneC\\dev\\Weatherly\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\MorneC\\AppData\\Roaming\\NuGet\\NuGet.Config",

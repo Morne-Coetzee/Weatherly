@@ -1,4 +1,4 @@
-namespace Wheatherly.Models
+namespace Weatherly.Models
 {
     public class ErrorViewModel
     {

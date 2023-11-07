@@ -1,4 +1,4 @@
-# Weather.ly - Wheather without hastles
+# Weather.ly - Weather without hastles
 
 ![Weather.ly Logo](/wwwroot/img/1-no-bg.png)
 
@@ -16,7 +16,7 @@ Weather.ly is a web application that allows you to retrieve real-time weather in
 To run Weather.ly locally on your machine, follow these steps:
 
 1. **Clone the Repository:**
-git clone https://github.com/Morne-Coetzee/Wheatherly.git
+git clone https://github.com/Morne-Coetzee/Weatherly.git
 
 2. **Navigate to the Project Directory:**
 cd Weather.ly

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZoU89hbariaJ6abPypPth/44RRMq0UPi6W+84zXRkhMuh63jAzNllpHln8kV6MG82q5+5TRo8ZLi6fKXmSC5PQ==",
+  "dgSpecHash": "XYQ+2Nk3wAZSa2bmcGwI/m5I4yeGB7UpAqcAmkUI5KbculvIpPnhwHpPmjtFodp9cI1bGlcaQMCdoK6drSzaAA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\MorneC\\dev\\Wheatherly\\Git\\Wheatherly\\Wheatherly.csproj",
+  "projectFilePath": "C:\\Users\\MorneC\\dev\\Weatherly\\Weatherly.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\MorneC\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
   ],
